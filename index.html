@@ -9,19 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f6f3ef; /* スクショの上品なベージュ */
-            --text-main: #000000; /* 高級感を出すための絶対的な黒 */
-            --text-sub: #7a6e67; /* 落ち着いたニュアンスカラー */
-            --gold-line: #d4af37; /* 本物のゴールド（上品な細線用） */
+            --bg-color: #f6f3ef; 
+            --text-main: #000000; 
+            --text-sub: #7a6e67; 
+            --gold-line: #d4af37; 
             --line-color: #e2ded9; 
             --card-bg: #faf8f5;
         }
 
         body.dark-mode {
-            --bg-color: #141210; /* 深みのある黒 */
+            --bg-color: #141210; 
             --text-main: #ffffff;
             --text-sub: #b2a7a0;
-            --gold-line: #c5a028; /* ダークモードに映えるゴールド */
+            --gold-line: #c5a028; 
             --line-color: #2e2a26;
             --card-bg: #1c1917;
         }
@@ -37,7 +37,7 @@
             transition: background-color 0.4s, color 0.4s;
         }
 
-        /* 画面最上部に固定されるナビゲーションバー */
+        /* 追従ナビゲーションバー */
         header {
             position: fixed;
             top: 0;
@@ -78,7 +78,6 @@
             transition: all 0.3s;
         }
 
-        /* メインコンテンツエリア */
         main {
             max-width: 480px;
             margin: 130px auto 100px;
@@ -102,20 +101,61 @@
             margin: 0;
         }
 
-        /* セクション設定 */
         section {
-            margin-bottom: 45px;
+            margin-bottom: 50px;
         }
 
-        /* 【改善】美しく上品なサイズの見出し ＋ 金色の下線 */
+        /* 上品な金色の下線（アニメーション付き） */
         h2 {
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-main);
-            margin: 0 0 12px 0;
+            margin: 0 0 15px 0;
             padding-bottom: 6px;
-            border-bottom: 1px solid var(--gold-line); /* 細く品のあるゴールド線 */
+            position: relative;
             letter-spacing: 1px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--gold-line);
+            animation: lineExpand 1.2s ease-out forwards;
+            transform-origin: left;
+        }
+
+        @keyframes lineExpand {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        /* リスト形式の実績欄（画像リスペクト） */
+        .list-container {
+            border-top: 1px solid var(--line-color);
+            margin-bottom: 20px;
+        }
+
+        .list-item {
+            border-bottom: 1px solid var(--line-color);
+            padding: 14px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-title {
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .list-value {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            font-weight: 500;
         }
 
         .desc-text {
@@ -126,20 +166,14 @@
             text-align: justify;
         }
 
-        /* フッターのURLカプセル */
-        footer {
+        /* ひっそり置く「実は天才」のスタイル */
+        .secret-note {
             text-align: center;
-            margin-top: 70px;
-        }
-
-        .url-badge {
-            display: inline-block;
-            background-color: var(--card-bg);
-            border: 1px solid var(--line-color);
-            padding: 6px 22px;
-            border-radius: 20px;
-            font-size: 0.75rem;
+            margin-top: 80px;
+            font-size: 0.8rem;
             color: var(--text-sub);
+            opacity: 0.6;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -161,26 +195,37 @@
             <p>中学1年生。マイクラが好きです。</p>
         </div>
 
-        <!-- マイクラアドオンセクション -->
+        <!-- 実績セクション -->
         <section>
-            <h2>マイクラアドオン開発</h2>
+            <h2>実績</h2>
+            <div class="list-container">
+                <div class="list-item">
+                    <span class="list-title">WEBサイト作成（HTML / CSS）</span>
+                    <span class="list-value">形になった</span>
+                </div>
+                <div class="list-item">
+                    <span class="list-title">マイクラ・アドオン制作（JSON制御）</span>
+                    <span class="list-value">だいたいできる</span>
+                </div>
+                <div class="list-item">
+                    <span class="list-title">直近の数学の定期テスト</span>
+                    <span class="list-value" style="color: #b91c1c; font-weight: 700;">44 点</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 今後について -->
+        <section>
+            <h2>これから</h2>
             <p class="desc-text">
-                ただ遊ぶだけではなく、自分でBehavior PackやResource PackのJSONコードを書き換えて、新しい要素を自作するのが趣味です。
+                アドオン作りに熱中しすぎて数学の勉強時間を完全に削ってしまいました。次のテストでは平均点以上を目標に、そろそろ本気を出そうと思います。
             </p>
         </section>
 
-        <!-- 数学44点セクション -->
-        <section>
-            <h2>数学 44点</h2>
-            <p class="desc-text">
-                前回の定期テストの結果。アドオン作りに熱中しすぎて、完全に勉強時間が足りませんでした。次は平均点以上を狙って、そろそろ本気出します。
-            </p>
-        </section>
-
-        <!-- カプセル型URLバー -->
-        <footer>
-            <div class="url-badge">yutaro-index.html</div>
-        </footer>
+        <!-- 【追加】下の方にひっそり置いたネタ -->
+        <div class="secret-note">
+            ※いろいろ書きましたが、実は天才です。
+        </div>
 
     </main>
 
