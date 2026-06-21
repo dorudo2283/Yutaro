@@ -67,7 +67,6 @@
             text-decoration: none;
         }
 
-        /* 修正：ボタンをシンプルに「ダーク / ライト」表記に */
         .mode-toggle {
             background: none;
             border: 1px solid var(--text-sub);
@@ -141,29 +140,35 @@
             margin-bottom: 20px;
         }
 
+        /* 【改善】文字が画面外に飛び出さないよう、自動改行と余白を制御 */
         .list-item {
             border-bottom: 1px solid var(--line-color);
             padding: 14px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap; 
+            gap: 10px; 
         }
 
         .list-title {
             font-size: 0.9rem;
             font-weight: 400;
+            flex-shrink: 0;
         }
 
         .list-value {
             font-size: 0.9rem;
             color: var(--text-sub);
             font-weight: 500;
+            text-align: right;
+            max-width: 100%;
         }
 
-        /* 修正：44点の通常カラー版 */
+        /* 【改善】44点だけ太字になっていたのを解除し、通常の太さに統一 */
         .list-value.math-score {
-            color: var(--text-main);
-            font-weight: 700;
+            color: var(--text-sub);
+            font-weight: 500;
         }
 
         .desc-text {
@@ -187,7 +192,6 @@
 </head>
 <body>
 
-    <!-- 追従ナビゲーションバー -->
     <header>
         <div class="nav-container">
             <a href="javascript:window.location.reload();" class="logo-link">YUTARO WEB</a>
@@ -197,13 +201,11 @@
 
     <main>
 
-        <!-- 上部：名前＋簡単な説明 -->
         <div class="profile-header">
-            <h1>優太郎　YUTARO</h1>
-            <p> HTML、Javascript、JSON辺りがなぜかできた一般人。ただの天才ですw</p>
+            <h1>優太郎 YUTARO</h1>
+            <p>HTML、Javascript、JSON辺りがなぜかできた一般人。ただの天才ですw</p>
         </div>
 
-        <!-- 実績セクション -->
         <section>
             <h2>実績</h2>
             <div class="list-container">
@@ -215,7 +217,6 @@
                     <span class="list-title">アドオン制作</span>
                     <span class="list-value">ほぼ出来てたけど、アプデで構文変わって泣いた</span>
                 </div>
-                <!-- 修正：「直近の」を削除、44点の色を統一 -->
                 <div class="list-item">
                     <span class="list-title">数学の定期テスト</span>
                     <span class="list-value math-score">44点。ノーコメ。</span>
@@ -223,23 +224,20 @@
             </div>
         </section>
 
-        <!-- アドオン制作について -->
         <section>
-            <h2>アドオン制作について</h2>
+            <h2>アドオン制作</h2>
             <p class="desc-text">
                 マイクラに飽きたのでアドオンていうものを作って見ました。思ったより楽しくて最近ではアドオンを自作するのが趣味です。
             </p>
         </section>
 
-        <!-- 数学44点について -->
         <section>
-            <h2>数学44点について</h2>
+            <h2>数学44点</h2>
             <p class="desc-text">
                 前回のテスト結果。なぜ人間は50点を基準にして判断するのか。次は平均点以上を狙って、そろそろ本気を出します。
             </p>
         </section>
 
-        <!-- 下の方にひっそり置いたオチ -->
         <div class="secret-note">
             ※いろいろ書きましたが、実は天才です。
         </div>
