@@ -6,258 +6,255 @@
     <title>YUTARO WEB</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- 高級感のあるフォントとシャープなフォントを導入 -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Noto+Sans+JP:wght@500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
+        /* カラー変数の定義（スクショの上品な色合いを完全再現） */
         :root {
-            --bg-dark: #121212; /* 深みのある黒 */
-            --bg-card: #1e1e1e; /* カードの高級感ある黒 */
-            --gold-main: #d4af37; /* 本物のゴールド */
-            --gold-light: #f3e5ab; /* 明るい上品な金 */
-            --text-white: #ffffff;
-            --text-gray: #a0a0a0;
-            --danger-red: #ff4d4d;
+            --bg-color: #f6f3ef; /* 温かみのある極薄のベージュ */
+            --text-main: #3c2f2f; /* 黒すぎない上品なダークブラウン */
+            --text-sub: #8a7a75; /* 洗練されたくすみニュアンスカラー */
+            --line-color: #e2ded9; /* 繊細な細い境界線 */
+            --card-bg: #faf8f5;
+        }
+
+        /* ダークモード（夜モード）用のカラー */
+        body.dark-mode {
+            --bg-color: #1a1616;
+            --text-main: #f6f3ef;
+            --text-sub: #b2a4a0;
+            --line-color: #2e2828;
+            --card-bg: #221d1d;
         }
 
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-white);
+            background-color: var(--bg-color);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            line-height: 1.5;
+            line-height: 1.7;
+            transition: background-color 0.4s, color 0.4s;
         }
 
-        /* 【改善】上のバーは「YUTARO WEB」のみ。高級感のあるゴールドデザイン */
+        /* 【改善】画面最上部に完全固定、スクロールで付いてくるメニューバー */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(18, 18, 18, 0.85);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--line-color);
             z-index: 1000;
             box-sizing: border-box;
+            transition: background-color 0.4s, border-color 0.4s;
         }
 
         .nav-container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 15px 20px;
+            padding: 18px 20px;
             display: flex;
-            justify-content: center; /* 中央配置でロゴを際立たせる */
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* クリックすると再読み込みするロゴリンク */
+        /* クリックすると再読み込みするロゴ */
         .logo-link {
-            font-family: 'Cinzel', serif; /* 高級感のある英字フォント */
-            font-weight: 700;
-            font-size: 1.4rem;
-            letter-spacing: 3px;
-            color: var(--gold-main);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.6rem;
+            letter-spacing: 4px;
+            color: var(--text-main);
             text-decoration: none;
-            transition: color 0.3s;
         }
 
-        .logo-link:hover {
-            color: var(--gold-light);
-        }
-
-        /* メインコンテンツ */
-        main {
-            max-width: 650px;
-            margin: 120px auto 60px;
-            padding: 0 20px;
-        }
-
-        /* ヒーローエリア */
-        .hero {
-            text-align: center;
-            padding: 20px 0 40px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            margin-bottom: 40px;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin: 0 0 10px 0;
-            letter-spacing: 1px;
-            background: linear-gradient(45deg, var(--gold-main), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1rem;
-            color: var(--text-gray);
-            margin: 0;
-            letter-spacing: 0.5px;
-        }
-
-        /* 2カラムレイアウト */
-        .grid-profile {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        /* 高級感のあるカードデザイン */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 8px;
-            padding: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .card h2 {
-            font-size: 1.1rem;
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: var(--gold-main);
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        /* デカ文字数字 */
-        .stat-value {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 10px;
-            font-family: 'Cinzel', serif;
-        }
-
-        .stat-value.red { color: var(--danger-red); }
-        .stat-value.gold { color: var(--gold-main); }
-
-        .stat-desc {
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            font-weight: 500;
-        }
-
-        /* スキルタグ */
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 15px;
-        }
-
-        .tag {
-            background-color: rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: var(--gold-light);
-            padding: 3px 8px;
-            border-radius: 4px;
+        /* 夜モード切り替えスイッチ */
+        .mode-toggle {
+            background: none;
+            border: 1px solid var(--text-sub);
+            color: var(--text-main);
+            padding: 5px 12px;
+            border-radius: 20px;
             font-size: 0.75rem;
-            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        .mode-toggle:hover {
+            opacity: 0.7;
         }
 
-        .tag.alert {
-            background-color: rgba(255, 77, 77, 0.1);
-            border: 1px solid rgba(255, 77, 77, 0.3);
-            color: var(--danger-red);
+        /* メインコンテンツ（固定バーの下に潜り込まないよう余白を設定） */
+        main {
+            max-width: 500px;
+            margin: 140px auto 100px;
+            padding: 0 24px;
         }
 
-        /* 下段のまとめカード */
-        .full-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 8px;
-            padding: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        /* SYSTEM ONLINE バッジ */
+        .status-badge {
+            display: inline-block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--text-sub);
+            border: 1px solid var(--line-color);
+            padding: 4px 16px;
+            margin-bottom: 50px;
+            font-weight: 400;
         }
 
-        .full-card h2 {
-            font-size: 1.1rem;
-            margin-top: 0;
-            margin-bottom: 12px;
-            color: var(--gold-main);
+        /* 各セクションの共通設定 */
+        section {
+            margin-bottom: 60px;
         }
 
-        .full-card p {
-            color: var(--text-white);
+        /* スクショの左の縦線を再現した見出し */
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--text-main);
+            margin: 0 0 24px 0;
+            padding-left: 15px;
+            border-left: 2px solid var(--text-sub);
+            letter-spacing: 1px;
+        }
+
+        /* 文章スタイル */
+        .about-text {
             font-size: 0.95rem;
-            margin: 0;
+            font-weight: 300;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .sub-tags {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            letter-spacing: 1px;
+        }
+
+        /* スクショのリスト形式を再現したAchievements */
+        .list-container {
+            border-top: 1px solid var(--line-color);
+        }
+
+        .list-item {
+            border-bottom: 1px solid var(--line-color);
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-title {
+            font-size: 0.95rem;
             font-weight: 500;
         }
 
-        /* フッター */
+        /* ネタ数値を綺麗に右側に配置 */
+        .list-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            font-weight: 600;
+        }
+
+        .list-value.alert {
+            color: #b91c1c; /* 高級感を崩さない落ち着いた赤 */
+        }
+
+        /* フッター（最下部のURLバー風） */
         footer {
             text-align: center;
-            padding: 40px 0;
-            font-size: 0.75rem;
-            color: var(--text-gray);
-            font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
+            margin-top: 80px;
+        }
+
+        .url-badge {
+            display: inline-block;
+            background-color: var(--card-bg);
+            border: 1px solid var(--line-color);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
     </style>
 </head>
 <body>
 
-    <!-- 上のバーはYUTARO WEBのみ。クリックで再読み込み -->
     <header>
         <div class="nav-container">
-            <a href="javascript:window.location.reload();" class="logo-link">YUTARO WEB</a>
+            <a href="javascript:window.location.reload();" class="logo-link">YUTARO</a>
+            <button class="mode-toggle" onclick="toggleMode()">NIGHT MODE</button>
         </div>
     </header>
 
     <main>
-        <!-- ヒーローエリア -->
-        <div class="hero">
-            <h1>優太郎 / YUTARO</h1>
-            <p>中学1年。マイクラのアドオン開発と、目下の課題である数学の克服。</p>
+        <div style="text-align: center;">
+            <div class="status-badge">SYSTEM ONLINE</div>
         </div>
 
-        <!-- 2カラムデータ -->
-        <div class="grid-profile">
-            
-            <!-- 数学のカード（完全中1リアル文章） -->
-            <div class="card">
-                <h2>MATHEMATICS</h2>
-                <div class="stat-value red">44</div>
-                <div class="stat-desc">
-                    この前の数学の点数。完全にやらかした。次は絶対に巻き返す。
-                </div>
-                <div class="tags">
-                    <span class="tag alert">要勉強</span>
-                    <span class="tag alert">凡ミス撲滅</span>
-                </div>
-            </div>
-
-            <!-- マイクラアドオンのカード -->
-            <div class="card">
-                <h2>MINECRAFT</h2>
-                <div class="stat-value gold">ADD</div>
-                <div class="stat-desc">
-                    ただ遊ぶだけじゃなく、アドオン（Bedrock Edition）を自作して世界を改造するのが好き。
-                </div>
-                <div class="tags">
-                    <span class="tag">Behavior Pack</span>
-                    <span class="tag">Resource Pack</span>
-                    <span class="tag">JSON</span>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- まとめカード -->
-        <div class="full-card">
-            <h2>CURRENT STATUS</h2>
-            <p>
-                アドオン作りに熱中しすぎて数学のエネルギーが枯渇した結果、44点という大ダメージを受けました。今はアドオンの開発スピードを少しだけ抑えて、数学の点数をダイヤ装備並みに硬くするための「勉強」という裏クエストを攻略中です。
+        <section id="about">
+            <h2>About</h2>
+            <p class="about-text">
+                たまたまPCを触り始めたら、たまたまアドオン開発ができるようになってしまった中学1年生です。
             </p>
-        </div>
+            <p class="sub-tags">
+                Minecrafter / Add-on Developer / Student
+            </p>
+        </section>
+
+        <section id="achievements">
+            <h2>Achievements</h2>
+            <div class="list-container">
+                
+                <div class="list-item">
+                    <span class="list-title">マイクラ・アドオン開発（Behavior / Resource）</span>
+                    <span class="list-value">Active</span>
+                </div>
+
+                <div class="list-item">
+                    <span class="list-title">JSON構造の理解とコード記述</span>
+                    <span class="list-value">Skill Verified</span>
+                </div>
+
+                <div class="list-item">
+                    <span class="list-title">直近の数学定期考査スコア</span>
+                    <span class="list-value alert">44 / 100</span>
+                </div>
+
+                <div class="list-item">
+                    <span class="list-title">次回：数学のデバフ解除ミッション</span>
+                    <span class="list-value">Phase 1</span>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <div class="url-badge">yutaro-web.net</div>
+        </footer>
     </main>
 
-    <footer>
-        <p>© 2026 YUTARO. ALL RIGHTS RESERVED.</p>
-    </footer>
+    <script>
+        // ダークモード切り替えのシンプルなJavaScript
+        function toggleMode() {
+            const body = document.body;
+            const btn = document.querySelector('.mode-toggle');
+            body.classList.toggle('dark-mode');
+            
+            if(body.classList.contains('dark-mode')) {
+                btn.textContent = 'DAY MODE';
+            } else {
+                btn.textContent = 'NIGHT MODE';
+            }
+        }
+    </script>
 
 </body>
 </html>
