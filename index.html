@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUTARO - Professional Profile</title>
+    <!-- 真面目な印象を与えるサンセリフ体フォントを読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 全体のスタイル（白ベースに紺色のアクセント） */
+        :root {
+            --primary-color: #003366; /* 濃紺：信頼感 */
+            --secondary-color: #f4f4f4; /* 薄いグレー：背景 */
+            --text-color: #333333; /* 濃いグレー：可読性 */
+            --accent-color: #0056b3; /* 明るい紺：リンク・強調 */
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        /* コンテナ */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* メインセクション */
+        main {
+            padding: 40px 0;
+        }
+
+        section {
+            background-color: #ffffff;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        p {
+            margin: 0 0 15px;
+        }
+
+        /* 実績リスト（数学とマイクラ） */
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .achievement-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .achievement-item:last-child {
+            border-bottom: none;
+        }
+
+        .achievement-date {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+        .achievement-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .achievement-desc {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* フッター */
+        footer {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <p class="site-title">YUTARO</p>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#vision">Vision</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- プロフィールセクション -->
+        <section id="about">
+            <h1>優太郎 | YUTARO</h1>
+            <p>仮想空間における創造的建築と論理構造の構築、および定量的課題への取り組みを行っております。</p>
+        </section>
+
+        <!-- 実績・スキル（真面目な表現の中にネタを配置） -->
+        <section id="achievements">
+            <h2>主要な実績と現在の課題</h2>
+            
+            <div class="achievement-list">
+                <!-- 数学44点の記述 -->
+                <div class="achievement-item">
+                    <div class="achievement-date">Recent Data</div>
+                    <div class="achievement-title">数学における定量的分析と課題（現状：44/100点）</div>
+                    <div class="achievement-desc">
+                        最新の評価において、数学分野での到達度が44%（100点満点中44点）であることを確認しました。これは現状の重大な課題であり、今後、基礎概念の再構築と、問題解決プロセスの効率化に向けた集中的な取り組みが必要です。
+                    </div>
+                </div>
+
+                <!-- マイクラの記述（真面目な言葉で） -->
+                <div class="achievement-item">
+                    <div class="achievement-date">Ongoing Project</div>
+                    <div class="achievement-title">サンドボックス環境における大規模構造物の設計と資源管理</div>
+                    <div class="achievement-desc">
+                        仮想空間「マインクラフト」において、複雑な建築物の企画・設計、および必要な資源の効率的な調達・管理プロセスを遂行しています。また、レッドストーン回路を用いた論理ゲートの構築を通じ、システムロジックへの理解を深めています。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ビジョンセクション -->
+        <section id="vision">
+            <h2>今後の展望</h2>
+            <p>
+                「学び」と「創造」の融合を目指します。現在の数学的課題（44点）を、仮想空間でのロジック構築（マイクラ）で培った問題解決能力と統合し、客観的な成果として提示することを目標としています。
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 YUTARO. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
