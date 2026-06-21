@@ -6,18 +6,16 @@
     <title>YUTARO WEB</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;800&display=swap" rel="stylesheet">
     <style>
-        /* カラー変数の定義（スクショの上品な色合いを完全再現） */
         :root {
-            --bg-color: #f6f3ef; /* 温かみのある極薄のベージュ */
-            --text-main: #3c2f2f; /* 黒すぎない上品なダークブラウン */
-            --text-sub: #8a7a75; /* 洗練されたくすみニュアンスカラー */
-            --line-color: #e2ded9; /* 繊細な細い境界線 */
+            --bg-color: #f6f3ef; 
+            --text-main: #3c2f2f; 
+            --text-sub: #8a7a75; 
+            --line-color: #e2ded9; 
             --card-bg: #faf8f5;
         }
 
-        /* ダークモード（夜モード）用のカラー */
         body.dark-mode {
             --bg-color: #1a1616;
             --text-main: #f6f3ef;
@@ -32,11 +30,11 @@
             color: var(--text-main);
             margin: 0;
             padding: 0;
-            line-height: 1.7;
+            line-height: 1.8;
             transition: background-color 0.4s, color 0.4s;
         }
 
-        /* 【改善】画面最上部に完全固定、スクロールで付いてくるメニューバー */
+        /* 常に上についてくるナビゲーションバー */
         header {
             position: fixed;
             top: 0;
@@ -52,121 +50,84 @@
         .nav-container {
             max-width: 600px;
             margin: 0 auto;
-            padding: 18px 20px;
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        /* クリックすると再読み込みするロゴ */
         .logo-link {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            font-size: 1.6rem;
-            letter-spacing: 4px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
             color: var(--text-main);
             text-decoration: none;
         }
 
-        /* 夜モード切り替えスイッチ */
         .mode-toggle {
             background: none;
             border: 1px solid var(--text-sub);
             color: var(--text-main);
-            padding: 5px 12px;
+            padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.75rem;
             cursor: pointer;
-            font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 1px;
             transition: all 0.3s;
         }
-        .mode-toggle:hover {
-            opacity: 0.7;
-        }
 
-        /* メインコンテンツ（固定バーの下に潜り込まないよう余白を設定） */
         main {
             max-width: 500px;
-            margin: 140px auto 100px;
+            margin: 110px auto 100px;
             padding: 0 24px;
         }
 
-        /* SYSTEM ONLINE バッジ */
-        .status-badge {
-            display: inline-block;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            color: var(--text-sub);
-            border: 1px solid var(--line-color);
-            padding: 4px 16px;
-            margin-bottom: 50px;
-            font-weight: 400;
+        /* 上部：名前＋簡単な説明 */
+        .profile-header {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--line-color);
         }
 
-        /* 各セクションの共通設定 */
+        .profile-header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+        }
+
+        .profile-header p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            margin: 0;
+        }
+
+        /* 個別セクション */
         section {
             margin-bottom: 60px;
         }
 
-        /* スクショの左の縦線を再現した見出し */
-        h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+        /* デカデカとタイトルを強調 */
+        .big-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 0 0 15px 0;
+            letter-spacing: -0.5px;
+        }
+
+        /* 数学44点だけ、この綺麗めなデザインを崩さない上品な赤に */
+        .big-title.math {
+            color: #b91c1c;
+        }
+
+        .desc-text {
+            font-size: 0.95rem;
             font-weight: 400;
             color: var(--text-main);
-            margin: 0 0 24px 0;
-            padding-left: 15px;
-            border-left: 2px solid var(--text-sub);
-            letter-spacing: 1px;
+            margin: 0;
         }
 
-        /* 文章スタイル */
-        .about-text {
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: var(--text-main);
-            margin-bottom: 16px;
-        }
-
-        .sub-tags {
-            font-size: 0.8rem;
-            color: var(--text-sub);
-            letter-spacing: 1px;
-        }
-
-        /* スクショのリスト形式を再現したAchievements */
-        .list-container {
-            border-top: 1px solid var(--line-color);
-        }
-
-        .list-item {
-            border-bottom: 1px solid var(--line-color);
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .list-title {
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        /* ネタ数値を綺麗に右側に配置 */
-        .list-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            color: var(--text-sub);
-            font-weight: 600;
-        }
-
-        .list-value.alert {
-            color: #b91c1c; /* 高級感を崩さない落ち着いた赤 */
-        }
-
-        /* フッター（最下部のURLバー風） */
+        /* フッターのURLカプセル */
         footer {
             text-align: center;
             margin-top: 80px;
@@ -180,78 +141,60 @@
             border-radius: 20px;
             font-size: 0.8rem;
             color: var(--text-sub);
-            letter-spacing: 0.5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
     </style>
 </head>
 <body>
 
+    <!-- 追従ナビバー -->
     <header>
         <div class="nav-container">
-            <a href="javascript:window.location.reload();" class="logo-link">YUTARO</a>
-            <button class="mode-toggle" onclick="toggleMode()">NIGHT MODE</button>
+            <a href="javascript:window.location.reload();" class="logo-link">YUTARO WEB</a>
+            <button class="mode-toggle" onclick="toggleMode()">画面の色を変える</button>
         </div>
     </header>
 
     <main>
-        <div style="text-align: center;">
-            <div class="status-badge">SYSTEM ONLINE</div>
+
+        <!-- 【改善】上部はシンプルに名前＋簡単な説明 -->
+        <div class="profile-header">
+            <h1>優太郎</h1>
+            <p>中学1年生。マイクラが好きです。</p>
         </div>
 
-        <section id="about">
-            <h2>About</h2>
-            <p class="about-text">
-                たまたまPCを触り始めたら、たまたまアドオン開発ができるようになってしまった中学1年生です。
-            </p>
-            <p class="sub-tags">
-                Minecrafter / Add-on Developer / Student
+        <!-- 【改善】数学44点セクション -->
+        <section>
+            <div class="big-title math">数学 44点</div>
+            <p class="desc-text">
+                前回の定期テストの結果。アドオン作りに熱中しすぎて完全に勉強時間が足りませんでした。次は平均点以上を狙って、そろそろ本気出します。
             </p>
         </section>
 
-        <section id="achievements">
-            <h2>Achievements</h2>
-            <div class="list-container">
-                
-                <div class="list-item">
-                    <span class="list-title">マイクラ・アドオン開発（Behavior / Resource）</span>
-                    <span class="list-value">Active</span>
-                </div>
-
-                <div class="list-item">
-                    <span class="list-title">JSON構造の理解とコード記述</span>
-                    <span class="list-value">Skill Verified</span>
-                </div>
-
-                <div class="list-item">
-                    <span class="list-title">直近の数学定期考査スコア</span>
-                    <span class="list-value alert">44 / 100</span>
-                </div>
-
-                <div class="list-item">
-                    <span class="list-title">次回：数学のデバフ解除ミッション</span>
-                    <span class="list-value">Phase 1</span>
-                </div>
-
-            </div>
+        <!-- 【改善】マイクラアドオンセクション -->
+        <section>
+            <div class="big-title">マイクラアドオン開発</div>
+            <p class="desc-text">
+                ただ遊ぶだけじゃなくて、自分でBehavior PackやResource PackのJSONコードを書き換えて、新しい要素を自作するのが趣味です。
+            </p>
         </section>
 
+        <!-- カプセル型URL -->
         <footer>
-            <div class="url-badge">yutaro-web.net</div>
+            <div class="url-badge">yutaro-index.html</div>
         </footer>
+
     </main>
 
     <script>
-        // ダークモード切り替えのシンプルなJavaScript
         function toggleMode() {
             const body = document.body;
             const btn = document.querySelector('.mode-toggle');
             body.classList.toggle('dark-mode');
             
             if(body.classList.contains('dark-mode')) {
-                btn.textContent = 'DAY MODE';
+                btn.textContent = '元に戻す';
             } else {
-                btn.textContent = 'NIGHT MODE';
+                btn.textContent = '画面の色を変える';
             }
         }
     </script>
